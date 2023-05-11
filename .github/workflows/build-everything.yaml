@@ -1,39 +1,27 @@
-# increase build latex on commit, GitHub Action file
-
-name: increase-build-latex
-run-name: ${{ github.event.inputs.run-name }}
+# build every latex file in root
+name: build-latex
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    # check what's been changed / added
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Check for changes, move changed files under root to ./changed
-        id: check
-        run: |
-          mkdir changed
-          git diff --name-only HEAD^ HEAD | xargs -I {} cp --parents {} changed
-      # build latex for every file in changed
+      # build latex for every file in root
       - name: build-latex
         id: build-latex
         uses: docker://blang/latex:ubuntu
         with:
           args: >
-            bash -c "for file in $(find ./changed -name '*.tex'); do
+            bash -c "for file in $(find . -name '*.tex'); do
             pdflatex -interaction=nonstopmode -halt-on-error -output-directory $(dirname $file) $file;
             done"
-
       # removes all files that are not .pdf
       - name: remove non-pdf
         run: |
-          find ./changed -type f ! -name '*.pdf' -delete
-
+          find . -type f ! -name '*.pdf' -delete
       - name: Get release
         id: get_release
         uses: bruceadams/get-release@v1.3.2
