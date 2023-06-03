@@ -1,7 +1,8 @@
 # build every latex file in root
 name: build-latex
 on:
-  workflow_dispatch:
+  release:
+    types: [created]
 
 jobs:
   build:
@@ -21,7 +22,7 @@ jobs:
       # removes all files that are not .pdf
       - name: remove non-pdf
         run: |
-          find . -type f ! -name '*.pdf' -delete
+          find . -type f ! -name '*.pdf' -delete && tar czf release.tar.gz .
       - name: Get release
         id: get_release
         uses: bruceadams/get-release@v1.3.2
@@ -34,6 +35,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: .
+          asset_path: release.tar.gz
           asset_name: changed
           asset_content_type: application/zip
