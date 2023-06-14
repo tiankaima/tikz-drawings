@@ -133,4 +133,42 @@
         \draw[->] (c) -- (d) node[midway,above] {$\log z$};
     \end{tikzpicture}
 };
+
+\tikz \node [scale=0.8, inner sep=0] {
+    \begin{tikzpicture}
+        \node (a) at (0,0) {
+            \begin{tikzpicture}
+                \filldraw[fill=gray!20,draw=white] (-2,0) -- (2,0) -- (2,1) -- (-2,1) -- (-2,0);
+                \draw[-] (-2,0) -- (2,0);
+
+                % label a at (0,1), filled with dot
+            \node[fill,circle,inner sep=1pt,label=above right:$a$] at (1,1) {};
+            \end{tikzpicture}
+        };
+
+        \node (b) at (8,0) {
+            \begin{tikzpicture}
+                \filldraw[fill=gray!20,draw=white] (-2,0) -- (2,0) -- (2,1) -- (-2,1) -- (-2,0);
+                \draw[-] (-2,0) -- (2,0);
+
+                % label a at (0,1), filled with dot
+            \node[fill,circle,inner sep=1pt,label=above right:$b$] at (1,1) {};
+            \end{tikzpicture}
+        };
+
+        \node (c) at (4,-4) {
+            \begin{tikzpicture}
+                % circle 1
+                \draw (0,0) circle (2);
+                % label O under, filled with dot
+                \node[fill,circle,inner sep=1pt,label=below:$O$] at (0,0) {};
+            \end{tikzpicture}
+        };
+
+        % from node a to c, label on right as f_1
+        \draw[->] (a) -- (c) node[midway,above right] {$f_1$};
+        % from node b to c, label on right as f_2
+        \draw[->] (b) -- (c) node[midway,below right] {$f_2$};
+    \end{tikzpicture}
+};
 \end{document}
