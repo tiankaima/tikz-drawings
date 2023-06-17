@@ -3,8 +3,8 @@
 # sudo apt-get update
 # sudo apt-get upgrade -y
 sudo apt-get install texlive-full imagemagick python3
+sudo sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-6/policy.xml
 mkdir img
-ls -al
 
 # .tex files are stored under src/
 # each file is a standalone tikzpicture, compile them to png, store in img/ with the same name
