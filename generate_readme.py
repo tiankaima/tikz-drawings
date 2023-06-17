@@ -8,7 +8,7 @@ def generate_readme():
         f.write("# Images\n\n")
 
         # sort the images by name
-        images = sorted(os.listdir("img/"))
+        images = sorted(os.listdir("img/"))[::-1]
         for image in images:
             if image.endswith(".png"):
                 f.write("## {0}\n\n![{0}](img/{0})\n\n".format(image))
