@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees}
+
+\begin{document}
+\begin{tikzpicture}
+  \draw (0,0) circle (1);
+  \node[fill,circle,inner sep=1pt,label=below left:$O$] at (0,0) {};
+  \node[fill,circle,inner sep=1pt,label=above right:$e^{i\theta_0}$] at (0.707,0.707) {};
+  \draw (0,0) -- (0.707,0.707);
+  \draw (0.707,0.707) -- (0.8,0.1);
+  \draw (0,0) -- (0.8,0.1);
+\end{tikzpicture}
+\end{document}

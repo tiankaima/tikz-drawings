@@ -1,9 +1,10 @@
-# assuming Ubuntu 20.04
+# assuming Ubuntu 20.04, skipping updates
 
-sudo apt-get update
-sudo apt-get upgrade
+# sudo apt-get update
+# sudo apt-get upgrade -y
 sudo apt-get install texlive-full imagemagick python3
 mkdir img
+ls -al
 
 # .tex files are stored under src/
 # each file is a standalone tikzpicture, compile them to png, store in img/ with the same name
