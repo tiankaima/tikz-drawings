@@ -11,7 +11,7 @@ def generate_readme():
         images = sorted(os.listdir("img/"))
         for image in images:
             if image.endswith(".png"):
-                f.write("![{0}](img/{0})\n\n".format(image))
+                f.write("## {0}\n\n![{0}](img/{0})\n\n".format(image))
 
 if __name__ == "__main__":
     generate_readme()
