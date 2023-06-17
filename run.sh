@@ -19,8 +19,10 @@ for f in src/*.tex; do
     pdflatex -output-directory img/ $f
     # convert pdf to png
     convert -density 300 img/$filename.pdf -quality 90 img/$filename.png
-    # remove pdf
+    # remove pdf, aux, log files
     rm img/$filename.pdf
+    rm img/$filename.aux
+    rm img/$filename.log
 done
 
 # run python script to generate README.md
