@@ -13,5 +13,13 @@ def generate_readme():
             if image.endswith(".png"):
                 f.write("## {0}\n\n![{0}](img/{0})\n\n".format(image))
 
+                # load .tex from the same name
+                tex = image[:-4] + ".tex"
+                if os.path.exists("src/" + tex):
+                    f.write("```tex\n")
+                    with open("src/" + tex, "r") as tex_file:
+                        f.write(tex_file.read())
+                    f.write("\n```\n\n")
+
 if __name__ == "__main__":
     generate_readme()
