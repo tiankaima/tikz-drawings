@@ -2,13 +2,8 @@
 
 sudo apt-get update
 sudo apt-get upgrade
-
-# install pdflatex
-sudo apt-get install texlive-full
-# install imagemagick
-sudo apt-get install imagemagick
-# install python3
-sudo apt-get install python3
+sudo apt-get install texlive-full imagemagick python3
+mkdir img
 
 # .tex files are stored under src/
 # each file is a standalone tikzpicture, compile them to png, store in img/ with the same name
